@@ -1,0 +1,36 @@
+<div data-ng-controller="gameViewController as gameView">
+    <div class="center">
+        <div class="row">
+            <div class="col-md-6">
+                <ul class="list">
+                    <li>
+                        <img src="images/Hand.png" ng-class="{true: 'transition', false: 'transition-disabled'}[isStarted]" class="transition-disabled">
+                    </li>
+                    <li ng-repeat="item in items" ng-show="item.selected">
+                        <img ng-src="images/{{item.image}}" class="transition-disabled">
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-6">
+                <ul class="list">
+                    <li>
+                        <img src="images/Hand.png" ng-class="{true: 'transition', false: 'transition-disabled'}[isStarted]" class="transition-disabled">
+                    </li>
+                    <li ng-repeat="item in roboItems" ng-show="item.selected">
+                        <img ng-src="images/{{item.image}}" class="transition-disabled">
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <br>
+        <div>
+            <form class="form-inline" name="game_form" role="form" ng-submit="startGame()">
+                <select id="select" class="form-control" ng-model="selected_option" required>
+                    <option ng-repeat="item in items" value="{{item.index}}">{{item.name}}</option>
+                </select>
+                <button id="play" type="submit" class="btn btn-primary" ng-disabled="selected_option == -1">Play</button>
+            </form>
+        </div>
+    </div>
+</div>
